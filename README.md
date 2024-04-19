@@ -1,6 +1,6 @@
 # It's an individual NLP Project during Master's Degree in Computer Science 
 
-Used Techs: Python, Jupyter, Flask, NLTK 
+Used Techs: Python, Jupyter, Flask, NLTK \n
 Here's some screens during running the model in web page 
 
 ![Screenshot from 2024-03-22 17-30-09](https://github.com/AhmedGamal-29/autofill-trigram/assets/101002059/f5707670-7fc8-4380-8d7d-85f0152adb1f)
