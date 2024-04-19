@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autofill Search</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+<style>
+        /* Center content vertically and horizontally */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        /* Style for the container */
+        .container {
+            text-align: center;
+        }
+
+        /* Style for the search */
+         #search-input {
+            width: 600px;
+            height: 40px;
+            font-size: 18px;
+        }
+    </style>
+
+
+
+
+
+
+
+<body>
+    <h1>Autofill Search</h1>
+    <h4>Trigram model</h4>
+    <input type="text" id="search-input" placeholder="Type to search">
+    <ul id="suggestions"></ul>
+
+     <script>
+        $(document).ready(function(){
+            $('#search-input').keyup(function(){
+                var partial = $(this).val();
+                $.get('/autocomplete', {'partial': partial}, function(data){
+                    $('#suggestions').empty();
+                    data.forEach(function(item){
+                        var sentence = partial + item[item.length-1];
+
+                        var listItem = $('<li class="suggestion">' + sentence + '</li>');
+                        $('#suggestions').append(listItem);
+                    });
+                });
+            });
+
+            // Click event handler for suggestions
+            $('#suggestions').on('click', '.suggestion', function(){
+                var suggestion = $(this).text();
+                $('#search-input').val(suggestion);
+            });
+        });
+    </script>
+
+    <footer>
+        <h5>Ahmed Gamal Ahmed | ID: 11422023490857 | Email: ahmed291.ag@gmail.com</h5>
+        <br>
+        Dr.Hanaa Mobarez | TA Ibrahim Ali
+    </footer>
+
+</body>
+</html>
